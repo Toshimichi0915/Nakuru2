@@ -1,0 +1,5 @@
+token: "Enter the token here"
+levels:
+- WARNING
+- SEVERE
+channel: "Enter the channel id here"
