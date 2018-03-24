@@ -1,27 +1,59 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
-group 'net.mini-game'
+// ビルドロジック
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.2"
+    }
+}
+
+// プロジェクト定義
+group 'net.mini_game'
 version '1.0-SNAPSHOT'
 
+// プラグイン適用
 apply plugin: 'java'
+apply plugin: "com.github.johnrengelman.shadow"
 
+// Java1.8
 sourceCompatibility = 1.8
 
+// shadowJar用にnetworkの追加
+configurations {
+    network
+    compile.extendsFrom(network)
+}
+
+// shadowJarにnetworkを梱包させる
+shadowJar {
+    configurations = [project.configurations.network]
+}
+
+// 依存関係
 repositories {
     mavenCentral()
+    jcenter()
+    //Spigot
     maven{
         url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
     }
     maven {
         url "https://oss.sonatype.org/content/repositories/snapshots/"
     }
+
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile "org.spigotmc:spigot-api:1.12.1-R0.1-SNAPSHOT"
+    network "net.dv8tion:JDA:3.4.0_317"
+    network "org.slf4j:slf4j-log4j12:1.7.25"
 }
 
+// 置換機能
 processResources {
     filter(ReplaceTokens, tokens: [name: rootProject.name, version: version])
 }
