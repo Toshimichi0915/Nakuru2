@@ -51,6 +51,7 @@ dependencies {
     compile "org.spigotmc:spigot-api:1.12.1-R0.1-SNAPSHOT"
     network "net.dv8tion:JDA:3.4.0_317"
     network "org.slf4j:slf4j-log4j12:1.7.25"
+    network "org.apache.commons:commons-collections4:4.0"
 }
 
 // 置換機能
