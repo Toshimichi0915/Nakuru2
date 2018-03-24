@@ -11,7 +11,7 @@ buildscript {
 }
 
 // プロジェクト定義
-group 'net.mini_game'
+group 'jp.mini_game'
 version '1.0-SNAPSHOT'
 
 // プラグイン適用
