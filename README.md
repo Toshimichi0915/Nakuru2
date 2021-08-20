@@ -1,5 +1,6 @@
 # Nakuru2
 Sends error stacktrace on CraftBukkit/Spigot/Paper server to a Discord channel
+
 config.yml
 ```
 token: "bot access token"
